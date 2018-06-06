@@ -4,13 +4,18 @@
 
   <div class= col-sm-8 col-sm-offset-2>
    <% @restaurants.each do |restaurant| %>
-     <class='name<%= restaurant.name %>'>
-     </p> Name: <%= restaurant.name %> </p>
-     <p class ='content'> Address: <%= link_to restaurant.address, restaurant_path(restaurant) %>
+  <p>
+    <%= link_to restaurant.name, restaurant %>
+    <%= restaurant.reviews.pluck(:rating) %>  </p>
+    <%= link_to new_restaurant_review_path(restaurant) do %>
+    <i class="fa fa-plus"></i> Add a rating
+    <% end %>
+     <% end %>
+   </ul>
+
+
+   <%= link_to new_restaurant_path do %>
+   <i class="fa fa-plus"></i> Add a new restaurant
    <% end %>
-</ul>
 
 
-<%= link_to new_restaurant_path do %>
-  <i class="fa fa-plus"></i> Add a new restaurant
-<% end %>
